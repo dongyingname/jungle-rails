@@ -2,6 +2,21 @@ class OrdersController < ApplicationController
 
   def show
     @order = Order.find(params[:id])
+
+    @line_items = @order.line_items.order(product_id: :asc)
+
+
+    products = @line_items.map{|line_item| Product.find(line_item.product_id)}
+  
+    @sorted_products = products.sort{|a, b| a.id - b.id}
+    # puts "@Order", @order
+    puts "@line_items",@line_items[0].product_id,@line_items[1].product_id,@line_items[2].product_id
+    
+    puts "@sorted_products",@sorted_products[0].id,@sorted_products[1].id,@sorted_products[2].id
+    @email = @order.email
+    @order_subtotal_cents = 0
+    @sorted_products.each_with_index{|product, index|  @order_subtotal_cents += (product.price * @line_items[index].quantity)}
+    puts "order_subtotal_cents", @order_subtotal_cents
   end
 
   def create
