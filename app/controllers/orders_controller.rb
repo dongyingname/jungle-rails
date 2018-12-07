@@ -10,13 +10,10 @@ class OrdersController < ApplicationController
   
     @sorted_products = products.sort{|a, b| a.id - b.id}
     # puts "@Order", @order
-    puts "@line_items",@line_items[0].product_id,@line_items[1].product_id,@line_items[2].product_id
     
-    puts "@sorted_products",@sorted_products[0].id,@sorted_products[1].id,@sorted_products[2].id
     @email = @order.email
     @order_subtotal_cents = 0
     @sorted_products.each_with_index{|product, index|  @order_subtotal_cents += (product.price * @line_items[index].quantity)}
-    puts "order_subtotal_cents", @order_subtotal_cents
   end
 
   def create
@@ -24,7 +21,16 @@ class OrdersController < ApplicationController
     order  = create_order(charge)
 
     if order.valid?
+      # @order = Order.find(params[:id])
+      @order = order
+       # Tell the UserMailer to send a welcome email after save
+       UserMailer.welcome_email.deliver_now
+      #  with(order: @order).
+      #  format.html { redirect_to(@user, notice: 'User was successfully created.') }
+      #  format.json { render json: @user, status: :created, location: @user }
+
       empty_cart!
+
       redirect_to order, notice: 'Your Order has been placed.'
     else
       redirect_to cart_path, flash: { error: order.errors.full_messages.first }
