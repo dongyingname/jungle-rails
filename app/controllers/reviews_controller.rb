@@ -8,7 +8,7 @@ class ReviewsController < ApplicationController
 
     puts "review_params", review_params.inspect
     if @review.save
-      redirect_to '/'
+      redirect_to :back
     else
       render template: "products/show"
     end
@@ -19,7 +19,7 @@ class ReviewsController < ApplicationController
 
     @review = Review.find params[:id]
     @review.destroy
-    redirect_to '/', notice: 'review deleted!'
+    redirect_to :back, notice: 'review deleted!'
   end
 
   private

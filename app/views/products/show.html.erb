@@ -33,9 +33,9 @@
           <li>
           <dd>Description: <%= review.description %></dd>
           <dd>Rating: <%= review.rating%></dd>
-
+          <% if session[:user_id] == review.user_id %>
           <%= link_to 'Delete', [@product,review], class: 'btn btn-sm btn-danger', method: :delete, data: { confirm: "Are you sure?" }  %>
-          
+          <% end %>
          
           </li>
           
