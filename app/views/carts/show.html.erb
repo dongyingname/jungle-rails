@@ -3,7 +3,7 @@
   <header class="page-header">
     <h1>My Cart</h1>
   </header>
-
+  <% if enhanced_cart.size > 0 %>  
   <div class="panel panel-default items">
     <table class="table table-bordered">
       <thead>
@@ -42,11 +42,16 @@
           data-name="Jungle"
           data-description="Khurram Virani's Jungle Order"
           data-locale="auto"
-          data-email="kvirani@gmail.com"
+          data-email=""
           data-currency="cad">
         </script>
       <% end %>
     </div>
   </div>
+  <% else %>
+  <h2>Your cart is empty!!!!</h2>
+  <%= link_to "HOME PAGE", "/" %>
+
+  <% end %>
 
 </section>
