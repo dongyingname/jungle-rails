@@ -12,14 +12,19 @@ class ReviewsController < ApplicationController
     else
       render template: "products/show"
     end
+  end
 
+  def destroy
+    puts 'hahahaaaaskjdka;jsdasnd;asknd;lsand;lkasndl;akndlk;asndl;knaldknsl;dnsal;kdans;kldnslkn'
 
+    @review = Review.find params[:id]
+    @review.destroy
+    redirect_to '/', notice: 'review deleted!'
   end
 
   private
 
   def review_params
-
     params.require(:review).permit(
       :rating,
       :description

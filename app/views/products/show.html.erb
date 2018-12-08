@@ -30,15 +30,13 @@
           <h2>Reviews</h2>
           <ul>
           <% @product.reviews.order(created_at: :desc).each do |review| %>
-          
           <li>
+          <dd>Description: <%= review.description %></dd>
+          <dd>Rating: <%= review.rating%></dd>
+
+          <%= link_to 'Delete', [@product,review], class: 'btn btn-sm btn-danger', method: :delete, data: { confirm: "Are you sure?" }  %>
           
-          <dd>User</dd>
-          <dd><%= review.user_id %></dd>
-          <dd>Detail</dd>
-          <dd><%= review.description %></dd>
-          <dd>Rating</dd>
-          <dd><%= review.rating%></dd>
+         
           </li>
           
           <% end %>
