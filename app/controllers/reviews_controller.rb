@@ -1,5 +1,7 @@
 class ReviewsController < ApplicationController
 
+  before_filter :current_user
+
   def create
     @product=Product.find params[:product_id]
     @review = Review.new(review_params)
