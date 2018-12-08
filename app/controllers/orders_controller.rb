@@ -24,10 +24,7 @@ class OrdersController < ApplicationController
       # @order = Order.find(params[:id])
       @order = order
        # Tell the UserMailer to send a welcome email after save
-       UserMailer.welcome_email.deliver_now
-      #  with(order: @order).
-      #  format.html { redirect_to(@user, notice: 'User was successfully created.') }
-      #  format.json { render json: @user, status: :created, location: @user }
+      OrderMailer.confirm_order(@order).deliver_now
 
       empty_cart!
 
