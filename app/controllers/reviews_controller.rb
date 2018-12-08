@@ -1,8 +1,11 @@
 class ReviewsController < ApplicationController
 
   def create
+    
     @review = Review.new(review_params)
     @review.user = current_user
+    @review.product = Product.find params[:product_id]
+
     puts "review_params", review_params.inspect
     if @review.save
       redirect_to '/'
@@ -12,11 +15,12 @@ class ReviewsController < ApplicationController
   private
 
   def review_params
-    {
-      product_id: params[:product_id],
-      rating: params.require(:review)[:rating],
-      description: params.require(:review)[:description]
-    }
+
+    params.require(:review).permit(
+      :rating,
+      :description
+    )
+  
   end
 
 
