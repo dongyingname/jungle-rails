@@ -50,7 +50,7 @@
         </div>
          <div class="form-group">
           <%= form.label :rating %>
-          <%= form.text_field :rating, class: 'form-control' %>
+          <%= form.select(:rating,[1,2,3,4,5]), %>
         </div>
 
         <%= form.submit 'Create Review', class: 'btn btn-primary' %>
