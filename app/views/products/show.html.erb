@@ -29,7 +29,7 @@
           
           <h2>Reviews</h2>
           <ul>
-          <% @product.reviews.each do |review| %>
+          <% @product.reviews.order(created_at: :desc).each do |review| %>
           
           <li>
           
@@ -43,6 +43,8 @@
           
           <% end %>
           </ul>
+          
+          <div>
            <%= form_for ([@product, @product.reviews.create]) do |form| %>
         <div class="form-group">
           <%= form.label :description %>
@@ -55,6 +57,7 @@
 
         <%= form.submit 'Create Review', class: 'btn btn-primary' %>
       <% end %>
+      </div>
         
         </dl>
       </div>
