@@ -1,4 +1,6 @@
 class Admin::CategoriesController < ApplicationController
+
+  include AdminAuthConcern
   
   def index
     @categories = Category.order(id: :desc).all

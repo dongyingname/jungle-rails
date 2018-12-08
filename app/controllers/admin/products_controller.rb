@@ -1,4 +1,6 @@
 class Admin::ProductsController < ApplicationController
+  
+  include AdminAuthConcern
 
   def index
     @products = Product.order(id: :desc).all
