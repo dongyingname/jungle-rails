@@ -43,7 +43,7 @@
           
           <% end %>
           </ul>
-           <%= form_for :review do |form| %>
+           <%= form_for ([@product, @product.reviews.create]) do |form| %>
         <div class="form-group">
           <%= form.label :description %>
           <%= form.text_field :description, class: 'form-control' %>
