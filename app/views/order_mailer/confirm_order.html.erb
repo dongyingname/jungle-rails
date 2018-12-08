@@ -1,17 +1,14 @@
+
 <!DOCTYPE html>
 <html>
   <head>
     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
   </head>
   <body>
-    <h1>Welcome to example.com</h1>
-    <p>
-      You have successfully signed up to example.com,
-      your username is:<br>
-    </p>
-    <p>
-      To login to the site, just follow this link:.
-    </p>
-    <p>Thanks for joining and have a great day!</p>
+    <h1>Thank you for your purchase from Jungle website!!</h1>
+    <h3>You used <%= @email %> for your order. </h3>
+    <h3>This is your reciept for order #<%= @order_id %>.</h3>
+    <p>Your subtotal is <%= @sub_total_cents %>cents.<br></p>
+    <p>Have a great day!</p>
   </body>
 </html>

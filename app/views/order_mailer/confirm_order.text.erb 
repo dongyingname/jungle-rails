@@ -1,4 +1,5 @@
-You have successfully signed up to example.com,
-
- 
-Thanks for joining and have a great day!
+Thank you for your purchase from Jungle website!!
+You used <%= @email %> for your order.
+This is your reciept for order #<%= @order_id %>
+Your subtotal is <%= @sub_total %>cents
+Have a great day!
