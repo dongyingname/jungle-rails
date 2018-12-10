@@ -1,11 +1,11 @@
 class UsersController < ApplicationController
 
-
   def new
   end
 
   def create
     user = User.new(user_params)
+    user.email = user.email.downcase
     if user.save
       session[:email] = user.email
       session[:user_id] = user.id
