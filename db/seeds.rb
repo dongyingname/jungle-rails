@@ -132,41 +132,4 @@ cat3.products.create!({
   price: 2_483.75
 })
 
-# Reviews
-p1.reviews.create!({
-  user_id: 1,
-  description: "this is so goood",
-  rating: 4
-})
-p1.reviews.create!({
-  user_id: 2,
-  description: "this is so better",
-  rating: 5
-})
-
-p1.reviews.create!({
-  user_id: 3,
-  description: "great product!!",
-  rating: 2
-})
-
-User.create!({
-  first_name: "Ying",
-  last_name: "Dong",
-  email: "dongyingname@yahoo.com",
-  password: "$2a$10$Ylnq5h9C9RPiGbuTfZxakePfs4.TK6tgdGzvA32UboQw4Ocs0JZnK"
-})
-
-User.create!({
-  first_name: "Kevin",
-  last_name: "Dong",
-  email: "dongyingname@yahoo.com",
-  password: "2a$10$.KnzWL/kNBf5w9dN.lGEJ.WQjcDAeqCkEd2ip9rr7nOfQ/o/N.ZkK"
-})
-User.create!({
-  first_name: "Kevin",
-  last_name: "Imbirdy",
-  email: "dongyingname@yahoo.com",
-  password: "$2a$10$dvRkZmvWUsM7oU2LO7LyzOfrGCefPCMwGXrnpgmbWE3ZTwpIs0Di2"
-})
-puts "DONE!"
+puts "Done!!!!"
