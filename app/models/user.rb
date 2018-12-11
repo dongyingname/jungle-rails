@@ -14,7 +14,7 @@ class User < ActiveRecord::Base
   has_secure_password
 
   def email_already_exist
-    if User.find_by(email: email.downcase )
+    if User.find_by(email: (email && email.downcase) )
       errors.add(:user, "Email already exist")
     end
   end

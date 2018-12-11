@@ -7,8 +7,8 @@ RSpec.describe User, type: :model do
       first_name: 'Imbirdy',
       last_name: 'Dong',
       email: 'imbirdy@yahoo.com',
-      password: 'ASDFGHJKLQWERTYUIO',
-      password_confirmation: 'ASDFGHJKLQWERTYUIO'
+      password: '1234567',
+      password_confirmation: '1234567'
     )
   end
   describe 'Validations: ' do
@@ -51,13 +51,13 @@ RSpec.describe User, type: :model do
         )
         expect(differnt_user1).to be_invalid
       end
-    end
+    end 
     
     context 'Email' do
      it 'is not registered by other users' do
        @user.save
        differnt_user2 = User.new(
-         first_name: 'HAHAHA',
+         first_name: 'Imbirdy',
          last_name: 'Joke',
          email: 'imbirdy@yahoo.com',
          password: 'Password1',
@@ -67,8 +67,22 @@ RSpec.describe User, type: :model do
        expect(differnt_user2).to be_invalid
      end
     end
+  end
 
-    
+  describe '.authenticate_with_credentials' do
+
+
+    it 'should return the user instance if the credentials match' do
+      
+    @user = User.find_by(id: 2)
+      login_user = User.authenticate_with_credentials('imbirdy@yahoo.com','1234567')
+      expect(login_user).to match @user
+    end 
+
+    it 'should return nil if the credentials dont match' do
+      login_user = User.authenticate_with_credentials('jajabinx@yahoo.com','Password2')
+      expect(login_user).to match nil
+    end
   end
 
    
